@@ -1,0 +1,32 @@
+{
+  "name": "loro-templates-minimal",
+  "displayName": "Loro Templates Minimal Test",
+  "description": "Minimal test for Activity Bar icon",
+  "version": "1.0.1",
+  "publisher": "lorotemplates",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewContainers": {
+      "activitybar": [
+        {
+          "id": "loro-test",
+          "title": "Loro Test",
+          "icon": "$(template)"
+        }
+      ]
+    },
+    "views": {
+      "loro-test": [
+        {
+          "id": "loroTestView",
+          "name": "Test View"
+        }
+      ]
+    }
+  }
+}

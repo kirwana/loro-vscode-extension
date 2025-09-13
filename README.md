@@ -9,7 +9,7 @@
 
 **Enterprise-grade template management for modern development teams**
 
-[🎯 Install Now](https://marketplace.visualstudio.com/items?itemName=lorotemplates.loro-templates) | [📖 Documentation](https://www.lorotemplates.com/docs) | [🔑 Get API Key](https://www.lorotemplates.com/signup)
+[🎯 Install Now](https://marketplace.visualstudio.com/items?itemName=lorotemplates.loro-templates) | [📖 Documentation](https://www.lorotemplates.com/docs) | [🔑 Get API Key](https://www.lorotemplates.com/login)
 
 </div>
 
@@ -54,7 +54,7 @@ Stop wrestling with template management! Loro Templates brings **enterprise-grad
 
 ### 1️⃣ **Get Your API Key**
 
-[Sign up for free at lorotemplates.com](https://www.lorotemplates.com/signup) to get your API key.
+[Sign up for free at lorotemplates.com](https://www.lorotemplates.com/login) to get your API key.
 
 ### 2️⃣ **Install the Extension**
 
@@ -228,6 +228,6 @@ This extension is licensed under the [GPL-2.0 License](LICENSE).
 
 **Built with ❤️ by the Loro Templates Team**
 
-[Website](https://www.lorotemplates.com) • [Get Started](https://www.lorotemplates.com/signup) • [Documentation](https://www.lorotemplates.com/docs)
+[Website](https://www.lorotemplates.com) • [Get Started](https://www.lorotemplates.com/login) • [Documentation](https://www.lorotemplates.com/docs)
 
 </div>

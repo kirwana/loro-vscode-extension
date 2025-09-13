@@ -39,6 +39,15 @@
   "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
+    "viewContainers": {
+      "activitybar": [
+        {
+          "id": "loro-templates",
+          "title": "Loro Templates",
+          "icon": "$(template)"
+        }
+      ]
+    },
     "languages": [
       {
         "id": "scriban",
@@ -105,36 +114,19 @@
         "category": "Loro"
       }
     ],
-    "viewContainers": {
-      "activitybar": [
-        {
-          "id": "loro-templates",
-          "title": "Loro Templates",
-          "icon": "$(file-code)"
-        }
-      ]
-    },
     "views": {
       "loro-templates": [
         {
-          "id": "loroTemplatesActivity",
-          "name": "Templates"
-        }
-      ],
-      "explorer": [
-        {
           "id": "loroTemplates",
-          "name": "Loro Templates",
-          "when": "loro.authenticated"
+          "name": "Templates",
+          "welcome": [
+            {
+              "contents": "Welcome to Loro Templates!\n[Login](command:loro.login)"
+            }
+          ]
         }
       ]
     },
-    "viewsWelcome": [
-      {
-        "view": "loroTemplates",
-        "contents": "No templates found. Please login to view your templates.\n[Login to Loro Templates](command:loro.login)"
-      }
-    ],
     "menus": {
       "view/title": [
         {
