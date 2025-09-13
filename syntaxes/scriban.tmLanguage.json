@@ -1,0 +1,215 @@
+{
+  "name": "Scriban",
+  "scopeName": "text.scriban",
+  "fileTypes": ["scriban", "sbn"],
+  "patterns": [
+    {
+      "include": "#scriban-expressions"
+    },
+    {
+      "include": "#scriban-statements"
+    },
+    {
+      "include": "#scriban-comments"
+    },
+    {
+      "include": "#html-content"
+    }
+  ],
+  "repository": {
+    "scriban-expressions": {
+      "name": "meta.embedded.expression.scriban",
+      "begin": "{{",
+      "end": "}}",
+      "beginCaptures": {
+        "0": { "name": "punctuation.definition.tag.scriban" }
+      },
+      "endCaptures": {
+        "0": { "name": "punctuation.definition.tag.scriban" }
+      },
+      "patterns": [
+        {
+          "include": "#expression-content"
+        }
+      ]
+    },
+    "scriban-statements": {
+      "name": "meta.embedded.statement.scriban",
+      "begin": "{%",
+      "end": "%}",
+      "beginCaptures": {
+        "0": { "name": "punctuation.definition.tag.scriban" }
+      },
+      "endCaptures": {
+        "0": { "name": "punctuation.definition.tag.scriban" }
+      },
+      "patterns": [
+        {
+          "include": "#statement-content"
+        }
+      ]
+    },
+    "scriban-comments": {
+      "name": "comment.block.scriban",
+      "begin": "{#",
+      "end": "#}",
+      "beginCaptures": {
+        "0": { "name": "punctuation.definition.comment.scriban" }
+      },
+      "endCaptures": {
+        "0": { "name": "punctuation.definition.comment.scriban" }
+      }
+    },
+    "expression-content": {
+      "patterns": [
+        {
+          "include": "#filters"
+        },
+        {
+          "include": "#functions"
+        },
+        {
+          "include": "#variables"
+        },
+        {
+          "include": "#operators"
+        },
+        {
+          "include": "#literals"
+        },
+        {
+          "include": "#parentheses"
+        }
+      ]
+    },
+    "statement-content": {
+      "patterns": [
+        {
+          "include": "#control-keywords"
+        },
+        {
+          "include": "#assignment"
+        },
+        {
+          "include": "#expression-content"
+        }
+      ]
+    },
+    "control-keywords": {
+      "match": "\\b(if|else|elsif|elseif|endif|unless|endunless|for|in|endfor|while|endwhile|break|continue|case|when|endcase|capture|endcapture|tablerow|endtablerow|assign|function|endfunction|ret|return|include|import|with|endwith|wrap|endwrap)\\b",
+      "name": "keyword.control.scriban"
+    },
+    "filters": {
+      "match": "\\|\\s*([a-zA-Z_][a-zA-Z0-9_]*)",
+      "captures": {
+        "1": { "name": "support.function.filter.scriban" }
+      }
+    },
+    "functions": {
+      "patterns": [
+        {
+          "match": "\\b(date|string|math|array|object|html|regex|timespan)\\.(\\w+)",
+          "captures": {
+            "1": { "name": "support.class.builtin.scriban" },
+            "2": { "name": "support.function.builtin.scriban" }
+          }
+        },
+        {
+          "match": "@(\\w+)",
+          "captures": {
+            "1": { "name": "support.function.scriban" }
+          }
+        }
+      ]
+    },
+    "variables": {
+      "patterns": [
+        {
+          "match": "\\$[a-zA-Z_][a-zA-Z0-9_]*",
+          "name": "variable.other.global.scriban"
+        },
+        {
+          "match": "\\b[a-zA-Z_][a-zA-Z0-9_]*(?=\\s*[\\[\\.])",
+          "name": "variable.other.object.scriban"
+        },
+        {
+          "match": "\\b[a-zA-Z_][a-zA-Z0-9_]*",
+          "name": "variable.other.scriban"
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "match": "(==|!=|<=|>=|<|>)",
+          "name": "keyword.operator.comparison.scriban"
+        },
+        {
+          "match": "(\\|\\||&&|!)",
+          "name": "keyword.operator.logical.scriban"
+        },
+        {
+          "match": "(\\+|-|\\*|/|%)",
+          "name": "keyword.operator.arithmetic.scriban"
+        },
+        {
+          "match": "(=)",
+          "name": "keyword.operator.assignment.scriban"
+        },
+        {
+          "match": "(\\?|:)",
+          "name": "keyword.operator.ternary.scriban"
+        }
+      ]
+    },
+    "literals": {
+      "patterns": [
+        {
+          "match": "\\b(true|false|null|empty)\\b",
+          "name": "constant.language.scriban"
+        },
+        {
+          "match": "\\b\\d+(\\.\\d+)?\\b",
+          "name": "constant.numeric.scriban"
+        },
+        {
+          "match": "\"([^\"\\\\]|\\\\.)*\"",
+          "name": "string.quoted.double.scriban"
+        },
+        {
+          "match": "'([^'\\\\]|\\\\.)*'",
+          "name": "string.quoted.single.scriban"
+        }
+      ]
+    },
+    "assignment": {
+      "match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s*(=)",
+      "captures": {
+        "1": { "name": "variable.other.assignment.scriban" },
+        "2": { "name": "keyword.operator.assignment.scriban" }
+      }
+    },
+    "parentheses": {
+      "begin": "\\(",
+      "end": "\\)",
+      "beginCaptures": {
+        "0": { "name": "punctuation.section.group.begin.scriban" }
+      },
+      "endCaptures": {
+        "0": { "name": "punctuation.section.group.end.scriban" }
+      },
+      "patterns": [
+        {
+          "include": "#expression-content"
+        }
+      ]
+    },
+    "html-content": {
+      "patterns": [
+        {
+          "include": "text.html.basic"
+        }
+      ]
+    }
+  }
+}

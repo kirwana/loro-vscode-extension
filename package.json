@@ -1,0 +1,185 @@
+{
+  "name": "loro-templates",
+  "displayName": "Loro Templates",
+  "description": "Scriban template editor and tester for Loro Templates service",
+  "version": "0.0.1",
+  "publisher": "lorotemplates",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other",
+    "Languages",
+    "Testing"
+  ],
+  "keywords": [
+    "scriban",
+    "templates",
+    "loro",
+    "template engine"
+  ],
+  "icon": "resources/icon.png",
+  "activationEvents": [
+    "onLanguage:scriban",
+    "onCommand:loro.login"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "scriban",
+        "aliases": [
+          "Scriban",
+          "scriban"
+        ],
+        "extensions": [
+          ".scriban",
+          ".sbn"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "scriban",
+        "scopeName": "text.scriban",
+        "path": "./syntaxes/scriban.tmLanguage.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "loro.login",
+        "title": "Login to Loro Templates",
+        "category": "Loro"
+      },
+      {
+        "command": "loro.logout",
+        "title": "Logout from Loro Templates",
+        "category": "Loro"
+      },
+      {
+        "command": "loro.createTemplate",
+        "title": "Create New Template",
+        "category": "Loro",
+        "icon": "$(add)"
+      },
+      {
+        "command": "loro.refreshTemplates",
+        "title": "Refresh Templates",
+        "category": "Loro",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "loro.openTemplate",
+        "title": "Open Template",
+        "category": "Loro"
+      },
+      {
+        "command": "loro.testTemplate",
+        "title": "Test Template",
+        "category": "Loro",
+        "icon": "$(play)"
+      },
+      {
+        "command": "loro.showUsage",
+        "title": "Show Usage Dashboard",
+        "category": "Loro"
+      },
+      {
+        "command": "loro.deleteTemplate",
+        "title": "Delete Template",
+        "category": "Loro"
+      }
+    ],
+    "views": {
+      "explorer": [
+        {
+          "id": "loroTemplates",
+          "name": "Loro Templates",
+          "when": "loro.authenticated"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "loroTemplates",
+        "contents": "No templates found. Please login to view your templates.\n[Login to Loro Templates](command:loro.login)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "loro.createTemplate",
+          "when": "view == loroTemplates",
+          "group": "navigation"
+        },
+        {
+          "command": "loro.refreshTemplates",
+          "when": "view == loroTemplates",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "loro.openTemplate",
+          "when": "view == loroTemplates && viewItem == template",
+          "group": "inline"
+        },
+        {
+          "command": "loro.testTemplate",
+          "when": "view == loroTemplates && viewItem == template",
+          "group": "inline"
+        },
+        {
+          "command": "loro.deleteTemplate",
+          "when": "view == loroTemplates && viewItem == template"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "loro.openTemplate",
+          "when": "false"
+        },
+        {
+          "command": "loro.deleteTemplate",
+          "when": "false"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Loro Templates",
+      "properties": {
+        "loro.apiEndpoint": {
+          "type": "string",
+          "default": "https://loro-template-service-api.azurewebsites.net",
+          "description": "API endpoint for Loro Templates service"
+        },
+        "loro.autoSync": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically sync templates with server"
+        },
+        "loro.testOnSave": {
+          "type": "boolean",
+          "default": false,
+          "description": "Automatically test template on save"
+        },
+        "loro.showUsageInStatusBar": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show API usage in status bar"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "16.x",
+    "@types/vscode": "^1.74.0",
+    "typescript": "^4.9.4"
+  }
+}
