@@ -2,10 +2,10 @@
   "name": "loro-templates",
   "displayName": "Loro Templates - Professional Scriban Manager",
   "description": "🚀 Enterprise-grade Scriban template management with Azure SQL integration, real-time testing, intelligent IntelliSense, and usage analytics",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "publisher": "lorotemplates",
   "engines": {
-    "vscode": "^1.85.0"
+    "vscode": "^1.74.0"
   },
   "categories": [
     "Programming Languages",
@@ -36,7 +36,10 @@
   },
   "license": "GPL-2.0",
   "pricing": "Free",
-  "activationEvents": [],
+  "activationEvents": [
+    "onView:loroTemplates",
+    "onCommand:loro.login"
+  ],
   "main": "./out/extension.js",
   "contributes": {
     "languages": [
@@ -108,24 +111,18 @@
     "viewContainers": {
       "activitybar": [
         {
-          "id": "loro-templates",
+          "id": "package-explorer",
           "title": "Loro Templates",
-          "icon": "$(file-code)"
+          "icon": "$(heart)"
         }
       ]
     },
     "views": {
-      "loro-templates": [
-        {
-          "id": "loroTemplatesActivity",
-          "name": "Templates"
-        }
-      ],
-      "explorer": [
+      "package-explorer": [
         {
           "id": "loroTemplates",
-          "name": "Loro Templates",
-          "when": "loro.authenticated"
+          "name": "Templates",
+          "type": "tree"
         }
       ]
     },

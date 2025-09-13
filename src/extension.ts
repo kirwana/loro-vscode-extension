@@ -39,7 +39,7 @@ export async function activate(context: vscode.ExtensionContext) {
         testRunner = new TestRunner(templateService);
         usageDashboard = new UsageDashboard(context, templateService);
 
-        // Register tree data provider
+        // Register tree data provider for Activity Bar
         vscode.window.registerTreeDataProvider('loroTemplates', templateTreeProvider);
 
         // Register CodeLens provider
