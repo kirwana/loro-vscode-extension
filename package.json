@@ -1,24 +1,37 @@
 {
   "name": "loro-templates",
-  "displayName": "Loro Templates",
-  "description": "Scriban template editor and tester for Loro Templates service",
-  "version": "0.0.1",
+  "displayName": "Loro Templates - Professional Scriban Manager",
+  "description": "🚀 Enterprise-grade Scriban template management with Azure SQL integration, real-time testing, intelligent IntelliSense, and usage analytics",
+  "version": "1.0.0",
   "publisher": "lorotemplates",
   "engines": {
     "vscode": "^1.74.0"
   },
   "categories": [
-    "Other",
-    "Languages",
-    "Testing"
+    "Programming Languages",
+    "Snippets",
+    "Testing",
+    "Other"
   ],
   "keywords": [
     "scriban",
     "templates",
     "loro",
-    "template engine"
+    "template engine",
+    "azure",
+    "email templates",
+    "liquid",
+    "templating",
+    "code generation"
   ],
-  "icon": "resources/icon.png",
+  "icon": "images/icon.png",
+  "galleryBanner": {
+    "color": "#1e1e1e",
+    "theme": "dark"
+  },
+  "homepage": "https://www.lorotemplates.com",
+  "license": "GPL-2.0",
+  "pricing": "Free",
   "activationEvents": [
     "onLanguage:scriban",
     "onCommand:loro.login"
