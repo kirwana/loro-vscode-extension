@@ -5,6 +5,13 @@ All notable changes to the "loro-templates" extension will be documented in this
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.9] - 2025-09-28
+
+### Fixed
+- Fixed sample data not loading correctly when using the "RUN TEST" CodeLens command
+- Improved handling of null/undefined sample data values from API
+- Added better logging for debugging template data retrieval
+
 ## [1.0.0] - 2025-09-13
 
 ### Added

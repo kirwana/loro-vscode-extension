@@ -172,7 +172,7 @@
       "properties": {
         "loro.apiEndpoint": {
           "type": "string",
-          "default": "https://loro-template-service-api.azurewebsites.net",
+          "default": "https://api.lorotemplates.com",
           "description": "API endpoint for Loro Templates service"
         },
         "loro.autoSync": {

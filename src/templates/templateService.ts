@@ -7,7 +7,7 @@ export class TemplateService {
 
     constructor(private context: vscode.ExtensionContext) {
         const config = vscode.workspace.getConfiguration('loro');
-        this.apiEndpoint = config.get<string>('apiEndpoint', 'https://loro-template-service-api.azurewebsites.net');
+        this.apiEndpoint = config.get<string>('apiEndpoint', 'https://api.lorotemplates.com');
     }
 
     private async getApiKey(): Promise<string | null> {
@@ -54,7 +54,10 @@ export class TemplateService {
 
     async getTemplate(id: string): Promise<Template | null> {
         try {
+            console.log(`Fetching template with id: ${id}`);
             const response = await this.makeApiCall<any>(`/api/templates/${id}`);
+            console.log('Raw API response:', response);
+
             // Normalize the template to ensure camelCase field names
             const template: Template = {
                 id: response.id || response.Id,
@@ -62,13 +65,16 @@ export class TemplateService {
                 category: response.category || response.Category,
                 description: response.description || response.Description,
                 content: response.content || response.Content,
-                sampleData: response.sampleData || response.SampleData,
+                sampleData: response.sampleData || response.SampleData || null,
                 isActive: response.isActive !== undefined ? response.isActive : response.IsActive,
                 createdAt: response.createdAt || response.CreatedAt,
                 updatedAt: response.updatedAt || response.UpdatedAt,
                 userId: response.userId || response.UserId,
                 schema: response.schema || response.Schema
             };
+
+            console.log('Normalized template:', template);
+            console.log('SampleData value:', template.sampleData);
             return template;
         } catch (error) {
             console.error('Error fetching template:', error);

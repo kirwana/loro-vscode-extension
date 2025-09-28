@@ -222,20 +222,30 @@ async function testTemplateFromEditor(document: vscode.TextDocument) {
     }
 
     // Use the sampleData from the stored template
-    let defaultSampleData = template.sampleData || '{}';
-    
-    // If no sample data in stored template, try to fetch fresh
-    if (defaultSampleData === '{}' && templateId) {
+    let defaultSampleData = template.sampleData;
+
+    // If no sample data in stored template, try to fetch fresh from server
+    if ((!defaultSampleData || defaultSampleData === '{}' || defaultSampleData === '') && templateId) {
         try {
+            console.log('Sample data is empty/missing, fetching fresh from server for template:', templateId);
             const { getTemplateService } = require('../extension');
             const templateService = getTemplateService();
             const fullTemplate = await templateService.getTemplate(templateId);
-            if (fullTemplate?.sampleData) {
+            console.log('Fetched template from server:', fullTemplate);
+            if (fullTemplate?.sampleData && fullTemplate.sampleData !== '') {
                 defaultSampleData = fullTemplate.sampleData;
+                console.log('Got sample data from server:', defaultSampleData);
+            } else {
+                console.log('No sample data found on server either');
             }
         } catch (error) {
             console.log('Could not load sample data from server:', error);
         }
+    }
+
+    // Final fallback to empty JSON object if still no data
+    if (!defaultSampleData || defaultSampleData === '') {
+        defaultSampleData = '{}';
     }
 
     // Create a larger input window for sample data

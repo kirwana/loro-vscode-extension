@@ -30,6 +30,9 @@ lerna-debug.log*
 .env.test.local
 .env.production.local
 
+# Deployment scripts with tokens
+deploy.sh
+
 # Test coverage
 coverage/
 *.lcov

@@ -266,6 +266,25 @@ export class UsageDashboard {
                     border-radius: 4px;
                     margin-bottom: 20px;
                 }
+
+                .powered-by {
+                    margin-top: 30px;
+                    padding-top: 20px;
+                    border-top: 1px solid var(--vscode-panel-border);
+                    text-align: center;
+                    color: var(--vscode-descriptionForeground);
+                    font-size: 14px;
+                }
+
+                .powered-by a {
+                    color: var(--vscode-textLink-foreground);
+                    text-decoration: none;
+                }
+
+                .powered-by a:hover {
+                    color: var(--vscode-textLink-activeForeground);
+                    text-decoration: underline;
+                }
             </style>
         </head>
         <body>
@@ -336,6 +355,10 @@ export class UsageDashboard {
                 <p>Total Templates: <strong>${templates.length}</strong></p>
                 <p>Active Templates: <strong>${templates.filter(t => t.isActive).length}</strong></p>
                 <p>Categories: <strong>${new Set(templates.map(t => t.category)).size}</strong></p>
+            </div>
+
+            <div class="powered-by">
+                <p>🚀 Powered by <a href="https://github.com/scriban/scriban/blob/master/license.txt" target="_blank">Scriban</a> - The fast, powerful, safe and lightweight scripting language and engine for .NET</p>
             </div>
 
             <script>
@@ -473,7 +496,7 @@ export class UsageDashboard {
     }
 
     private async openBillingDashboard(): Promise<void> {
-        const billingUrl = 'https://lorotemplates.com/billing';
+        const billingUrl = 'https://lorotemplates.com/usage';
         await vscode.env.openExternal(vscode.Uri.parse(billingUrl));
     }
 }

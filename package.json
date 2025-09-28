@@ -2,7 +2,7 @@
   "name": "loro-templates",
   "displayName": "Loro Templates - Professional Scriban Manager",
   "description": "🚀 Enterprise-grade Scriban template management with Azure SQL integration, real-time testing, intelligent IntelliSense, and usage analytics",
-  "version": "1.0.3",
+  "version": "1.0.9",
   "publisher": "lorotemplates",
   "engines": {
     "vscode": "^1.74.0"
@@ -108,21 +108,13 @@
         "category": "Loro"
       }
     ],
-    "viewContainers": {
-      "activitybar": [
-        {
-          "id": "package-explorer",
-          "title": "Loro Templates",
-          "icon": "$(heart)"
-        }
-      ]
-    },
     "views": {
-      "package-explorer": [
+      "explorer": [
         {
           "id": "loroTemplates",
-          "name": "Templates",
-          "type": "tree"
+          "name": "Loro Templates",
+          "type": "tree",
+          "when": "loro.authenticated"
         }
       ]
     },
@@ -177,7 +169,7 @@
       "properties": {
         "loro.apiEndpoint": {
           "type": "string",
-          "default": "https://loro-template-service-api.azurewebsites.net",
+          "default": "https://api.lorotemplates.com",
           "description": "API endpoint for Loro Templates service"
         },
         "loro.autoSync": {

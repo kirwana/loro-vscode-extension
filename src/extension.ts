@@ -194,11 +194,15 @@ async function createNewTemplate() {
 
 async function openTemplate(template: any) {
     try {
+        console.log('Opening template with id:', template.id);
         const fullTemplate = await templateService.getTemplate(template.id);
         if (!fullTemplate) {
             vscode.window.showErrorMessage('Could not load template details');
             return;
         }
+
+        console.log('Full template fetched:', fullTemplate);
+        console.log('Sample data in template:', fullTemplate.sampleData);
 
         // Create a new untitled document with the template content
         const doc = await vscode.workspace.openTextDocument({
@@ -207,9 +211,10 @@ async function openTemplate(template: any) {
         });
 
         const editor = await vscode.window.showTextDocument(doc);
-        
+
         // Store the ENTIRE template object so we have all fields when saving
         templateDocuments.set(doc.uri.toString(), fullTemplate);
+        console.log('Stored template in templateDocuments with URI:', doc.uri.toString());
         
         // Show save instructions
         vscode.window.showInformationMessage(
@@ -359,6 +364,10 @@ function getTestResultHtml(template: any, result: any): string {
             </div>
         </div>
         ` : ''}
+
+        <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--vscode-panel-border); text-align: center; color: var(--vscode-descriptionForeground); font-size: 12px;">
+            🚀 Powered by <a href="https://github.com/scriban/scriban/blob/master/license.txt" target="_blank" style="color: var(--vscode-textLink-foreground); text-decoration: none;">Scriban</a> - The fast, powerful, safe and lightweight scripting language and engine for .NET
+        </div>
     </body>
     </html>`;
 }

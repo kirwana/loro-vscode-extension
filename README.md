@@ -139,7 +139,7 @@ Configure the extension in your VS Code settings:
 
 ```json
 {
-  "loro.apiEndpoint": "https://loro-template-service-api.azurewebsites.net",
+  "loro.apiEndpoint": "https://api.lorotemplates.com",
   "loro.autoSave": true,
   "loro.validateOnSave": true,
   "loro.showCodeLens": true
@@ -179,9 +179,11 @@ Configure the extension in your VS Code settings:
 
 | Tier | API Calls/Month | Price | Best For |
 |------|----------------|-------|----------|
-| **Free** | 1,000 | $0 | Individual developers |
-| **Starter** | 10,000 | $29 | Small teams |
-| **Professional** | 100,000 | $99 | Growing businesses |
+| **Free** | 100 | $0 | Individual developers |
+| **Starter** | 3,000 | $9 | Small teams |
+| **Growth** | 15,000 | $29 | Growing teams |
+| **Professional** | 50,000 | $79 | Growing businesses |
+| **Scale** | 150,000 | $199 | Large teams |
 | **Enterprise** | Unlimited | Custom | Large organizations |
 
 [View Full Pricing →](https://www.lorotemplates.com/pricing)
@@ -206,13 +208,15 @@ Configure the extension in your VS Code settings:
 ## 🤝 Getting Help
 
 - 📖 [Documentation](https://www.lorotemplates.com/docs)
-- 🎓 [Video Tutorials](https://www.lorotemplates.com/tutorials)
-- 💬 [Community Forum](https://www.lorotemplates.com/community)
 - 📧 [Email Support](mailto:support@lorotemplates.com)
 
 ## 📄 License
 
 This extension is licensed under the [GPL-2.0 License](LICENSE).
+
+## 🚀 Powered by Scriban
+
+This extension is built on top of [Scriban](https://github.com/scriban/scriban) - the fast, powerful, safe and lightweight scripting language and engine for .NET. Scriban is licensed under the [BSD 2-Clause License](https://github.com/scriban/scriban/blob/master/license.txt).
 
 ## 🎉 What Users Are Saying
 

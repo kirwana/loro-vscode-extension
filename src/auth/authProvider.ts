@@ -93,7 +93,7 @@ export class AuthProvider {
     private async validateApiKey(apiKey: string): Promise<boolean> {
         try {
             const config = vscode.workspace.getConfiguration('loro');
-            const apiEndpoint = config.get<string>('apiEndpoint', 'https://loro-template-service-api.azurewebsites.net');
+            const apiEndpoint = config.get<string>('apiEndpoint', 'https://api.lorotemplates.com');
             
             console.log(`Validating API key against: ${apiEndpoint}/api/usage/dashboard`);
             console.log(`API Key: ${apiKey.substring(0, 8)}...`);
@@ -135,7 +135,7 @@ export class AuthProvider {
     private async fetchUserEmail(apiKey: string): Promise<string | null> {
         try {
             const config = vscode.workspace.getConfiguration('loro');
-            const apiEndpoint = config.get<string>('apiEndpoint', 'https://loro-template-service-api.azurewebsites.net');
+            const apiEndpoint = config.get<string>('apiEndpoint', 'https://api.lorotemplates.com');
             
             const response = await httpRequest(`${apiEndpoint}/api/usage/dashboard`, {
                 method: 'GET',
