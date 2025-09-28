@@ -2,7 +2,7 @@
   "name": "loro-templates",
   "displayName": "Loro Templates - Professional Scriban Manager",
   "description": "🚀 Enterprise-grade Scriban template management with Azure SQL integration, real-time testing, intelligent IntelliSense, and usage analytics",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "publisher": "lorotemplates",
   "engines": {
     "vscode": "^1.74.0"
